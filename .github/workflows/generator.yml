@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Create Pull Request
-        uses: GraceCWY/GenerateAPICommon@v1
+        uses: GraceCWY/GenerateAPICommon@*
         with:
           commit-message: 'build: update generated typescript'
           title: Update generated typescript
