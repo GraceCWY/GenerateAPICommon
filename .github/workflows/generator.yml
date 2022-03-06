@@ -6,8 +6,6 @@ name: OpenApi generator CI
 on:
   push:
     branches: [ dev ]
-    paths: 
-    - '*.yml'
   pull_request:
     branches: [ release ]
 
