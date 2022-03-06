@@ -7,7 +7,7 @@ on:
   push:
     branches: [ dev ]
     paths: 
-    - '*.yaml'
+    - '*.yml'
   pull_request:
     branches: [ release ]
 
