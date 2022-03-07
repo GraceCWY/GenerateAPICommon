@@ -32,7 +32,7 @@ jobs:
         path: 'petstore1.json'
         from: 'json'
         to: 'yaml'
-    - run: npm run codegen -- -i "${{ steps.json2yaml.outputs.data }}"
+    - run: npm run codegen -- -i petstore1.json
     - uses: EndBug/add-and-commit@v8
   #package:
   #  needs: [build]
