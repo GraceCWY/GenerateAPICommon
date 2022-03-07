@@ -11,7 +11,6 @@ on:
 
 jobs:
   build:
-    needs: [converter]
     runs-on: ubuntu-latest
 
     strategy:
