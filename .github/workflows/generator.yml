@@ -29,7 +29,7 @@ jobs:
     - uses: fabasoad/yaml-json-xml-converter-action@main
       id: json2yaml
       with:
-        path: 'petstore.json'
+        path: 'petstore1.json'
         from: 'json'
         to: 'yaml'
     - run: npm run codegen -- -i "${{ steps.json2yaml.outputs.data }}"
