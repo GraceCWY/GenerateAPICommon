@@ -26,11 +26,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'   
     - run: npm ci
-    - uses: actions/checkout@v2
     - uses: fabasoad/yaml-json-xml-converter-action@main
       id: json2yaml
       with:
-        path: 'https://petstore.swagger.io/v2/swagger.json'
+        path: 'petstore.json'
         from: 'json'
         to: 'yaml'
     - name: Print json2yaml result
