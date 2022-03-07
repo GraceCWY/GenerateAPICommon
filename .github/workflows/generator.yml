@@ -10,8 +10,21 @@ on:
     branches: [ release ]
 
 jobs:
+  converter:
+  
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: fabasoad/yaml-json-xml-converter-action@main
+        id: json2yaml
+        with:
+          path: 'https://petstore.swagger.io/v2/swagger.json'
+          from: 'json'
+          to: 'yaml'
+      - name: Print json2yaml result
+        run: echo "${{ steps.json2yaml.outputs.data }}"
   build:
-
+    needs: [converter]
     runs-on: ubuntu-latest
 
     strategy:
@@ -25,16 +38,7 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: Get swagger json
-      uses: fabasoad/yaml-json-xml-converter-action@main
-        id: json2yaml
-        with:
-          path: 'https://petstore.swagger.io/v2/swagger.json'
-          from: 'json'
-          to: 'yaml'
-    - name: Print json2yaml result
-      run: echo "${{ steps.json2yaml.outputs.data }}"
+        cache: 'npm'   
     - run: npm ci
     - run: npm run codegen -- -i "${{ steps.json2yaml.outputs.data }}"
     - uses: EndBug/add-and-commit@v8
