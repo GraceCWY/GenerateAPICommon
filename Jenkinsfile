@@ -22,6 +22,11 @@ pipeline {
                      sh("git add -A")
                     sh("git commit -m 'Merged release branch to dev'")
                      sh("git push origin https://${GIT_USERNAME}:${GIT_PASSWORD}@dev_helen HEAD:release-1")
+                     sh("git config --global user.email 'codinghk2020@gmail.com'")
+                    sh("git config user.name 'codingdoghelen'")
+
+                    
+                  
 
                     
 //                     sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@dev_helen")
