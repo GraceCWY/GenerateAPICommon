@@ -20,7 +20,7 @@ pipeline {
                      sh("git merge origin/release_helen")
                      sh("git add -A")
                     sh("git commit -m 'Merged release branch to dev'")
-                    sh("git push origin dev")
+                    sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@dev_helen")
 
 //                     sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@release') 
 //                     sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@release HEAD:release-1')                  
