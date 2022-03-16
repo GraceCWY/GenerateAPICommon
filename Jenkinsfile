@@ -13,12 +13,12 @@ pipeline {
                 sh 'npm install'
                 sh 'npm run codegen -- -i petstore1.json'                                
                 withCredentials([usernamePassword(credentialsId: 'git-pass-credentials-ID', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                    sh("git checkout origin/dev_helen")
+                    sh("git checkout origin/release_helen")
                     sh("git tag -d some_tag")
                     sh("git tag -a some_tag -m 'Jenkins'")
-//                     sh("git merge origin/release_helen")
+//                     sh("git merge origin/dev_helen")
                     sh("git clean  -d  -f .")
-                     sh("git merge origin/release_helen")
+                     sh("git merge origin/dev_helen")
                      sh("git add -A")
                     sh("git commit -m 'Merged release branch to dev'")
                      sh("git push origin/dev_helen")
