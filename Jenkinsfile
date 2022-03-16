@@ -1,8 +1,6 @@
 pipeline {
     agent any
     
-    tools {nodejs "nodejs"}
-
     environment {
         CI = 'true'
     }
@@ -10,7 +8,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'npm config ls'
                 sh 'npm install'
                 sh 'npm run codegen -- -i petstore1.json'                                
                 withCredentials([usernamePassword(credentialsId: 'git-pass-credentials-ID', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
