@@ -15,7 +15,11 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'git-pass-credentials-ID', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     sh("git tag -d some_tag")
                     sh("git tag -a some_tag -m 'Jenkins'")
-                    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@release') 
+                    sh("git merge release")
+                    sh("git commit -m 'Merged release branch to dev'")
+                    sh("git push origin dev")
+
+//                     sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@release') 
 //                     sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@release HEAD:release-1')                  
                 }
                 echo 'End Building..'
