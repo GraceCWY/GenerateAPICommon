@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo 'test'
                 echo 'Building..'
                 sh 'npm install'
                 sh 'npm run codegen -- -i petstore1.json'                                
