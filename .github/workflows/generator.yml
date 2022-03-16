@@ -6,6 +6,8 @@ name: OpenApi generator CI
 on:
   push:
     branches: [ dev ]
+    paths: [ petstore1.json ]
+    
   pull_request:
     branches: [ release ]
 
