@@ -15,7 +15,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'git-pass-credentials-ID', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     sh("git tag -d some_tag")
                     sh("git tag -a some_tag -m 'Jenkins'")
-                    sh("git merge origin/release_helen")
+//                     sh("git merge origin/release_helen")
                     sh("git clean  -d  -f .")
                      sh("git merge origin/release_helen")
                      sh("git add -A")
