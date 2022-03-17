@@ -16,12 +16,17 @@ pipeline {
                     sh("git checkout origin/dev_helen")
                     sh("git tag -d some_tag")
                     sh("git tag -a some_tag -m 'Jenkins'")
-//                     sh("git merge origin/release_helen")
+//                     sh("git merge origin/dev_helen")
                     sh("git clean  -d  -f .")
-                     sh("git merge origin/release_helen")
+                     sh("git merge origin/dev_helen")
                      sh("git add -A")
                     sh("git commit -m 'Merged release branch to dev'")
-                     sh("git push origin/dev_helen")
+                     sh("git push origin https://${GIT_USERNAME}:${GIT_PASSWORD}@dev_helen HEAD:release-1")
+                    sh("git config --global user.email 'codinghk2020@gmail.com'")
+                    sh("git config --global user.name 'codingdoghelen'")
+
+                    
+                  
 
                     
 //                     sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@dev_helen")
